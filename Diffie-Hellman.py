@@ -1,8 +1,6 @@
 # Implementacion de la libreria secrets (https://github.com/python/cpython/blob/3.10/Lib/secrets.py)
 from random import SystemRandom
-_sysrand = SystemRandom()
-
-randbits = _sysrand.getrandbits
+randbits = SystemRandom().getrandbits
 
 g = 2
 p = 23
