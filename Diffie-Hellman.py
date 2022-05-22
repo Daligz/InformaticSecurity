@@ -31,12 +31,12 @@ print(alice['xA'])
 print(bob['xB'])
 
 # Intercambio de numeros
-bob['cA'] = send(alice['xA'], p)
-alice['cB'] = send(bob['xB'], p)
+bob['cA'] = alice['xA']
+alice['cB'] = bob['xB']
 
 # Computo de llave secreta
-bob['Kba'] = send(alice['cB'], bob['xB'])
-alice['Kab'] = send(bob['cA'], alice['xA'])
+bob['Kba'] = send(bob['cA'], bob['xB'])
+alice['Kab'] = send(alice['cB'], alice['xA'])
 
 print("Claves...")
 print("Bob : " + str(bob['Kba']))
