@@ -6,6 +6,7 @@ g = 2
 p = 23
 
 # No esta permitido utilizar el operador %
+# Pero esta forma es muy lenta (Se utiliza pow)
 def modsc(num, lim):
     n = 0
     for i in range(num):
@@ -14,8 +15,19 @@ def modsc(num, lim):
         n += 1
     return n
 
-def send(p, num):
-    return modsc(g ** num, p)
+def send(num, p):
+    return pow(g, num, p)
+    #return modsc(g ** num, p)
 
-print(send(p, 6)) # 8
-print(randbits(256))
+# Objetos para almacenar datos
+alice = {}
+bob = {}
+
+# Llaves privadas
+alice['xA'] = randbits(256)
+bob['xB'] = randbits(256)
+
+print(alice['xA'])
+print(bob['xB'])
+
+# Intercambio de numeros
