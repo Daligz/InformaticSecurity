@@ -5,6 +5,7 @@ randbits = SystemRandom().getrandbits
 g = 2
 p = 23
 
+# No esta permitido utilizar el operador %
 def modsc(num, lim):
     n = 0
     for i in range(num):
