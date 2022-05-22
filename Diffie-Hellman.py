@@ -31,3 +31,18 @@ print(alice['xA'])
 print(bob['xB'])
 
 # Intercambio de numeros
+bob['cA'] = send(alice['xA'], p)
+alice['cB'] = send(bob['xB'], p)
+
+# Computo de llave secreta
+bob['Kba'] = send(alice['cB'], bob['xB'])
+alice['Kab'] = send(bob['cA'], alice['xA'])
+
+print("Claves...")
+print("Bob : " + str(bob['Kba']))
+print("Alice : " + str(alice['Kab']))
+
+if (bob['Kba'] == alice['Kab']):
+    print("Llaves correctas!")
+else:
+    print("Llaves incorrectas :C")
