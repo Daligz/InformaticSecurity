@@ -1,5 +1,7 @@
+import hashlib
 # Implementacion de la libreria secrets (https://github.com/python/cpython/blob/3.10/Lib/secrets.py)
 from random import SystemRandom
+from turtle import st
 randbits = SystemRandom().getrandbits
 
 g = 2
@@ -19,6 +21,11 @@ def send(num, p):
     return pow(g, num, p)
     #return modsc(g ** num, p)
 
+def hashKey(key):
+    sha256 = hashlib.sha256()
+    sha256.update(repr(key).encode())
+    return sha256.hexdigest()
+
 # Objetos para almacenar datos
 alice = {}
 bob = {}
@@ -27,8 +34,10 @@ bob = {}
 alice['xA'] = randbits(256)
 bob['xB'] = randbits(256)
 
-print(alice['xA'])
-print(bob['xB'])
+print("Llaves privadas:")
+print("Bob: " + str(bob['xB']))
+print("Alice: " + str(alice['xA']))
+print()
 
 # Intercambio de numeros
 bob['cA'] = pow(g, alice['xA'], p)
@@ -38,11 +47,20 @@ alice['cB'] = pow(g, bob['xB'], p)
 bob['Kba'] = pow(bob['cA'], bob['xB'], p)
 alice['Kab'] = pow(alice['cB'], alice['xA'], p)
 
-print("Claves...")
+print("Claves:")
 print("Bob : " + str(bob['Kba']))
 print("Alice : " + str(alice['Kab']))
+print()
 
-if (bob['Kba'] == alice['Kab']):
+bobHashKey = hashKey(bob['Kba'])
+aliceHashKey = hashKey(alice['Kab'])
+
+print("Claves hash:")
+print("Bob : " + str(bobHashKey))
+print("Alice : " + str(aliceHashKey))
+print()
+
+if (bobHashKey == aliceHashKey):
     print("Llaves correctas!")
 else:
     print("Llaves incorrectas :C")
