@@ -1,7 +1,6 @@
 import hashlib
 # Implementacion de la libreria secrets (https://github.com/python/cpython/blob/3.10/Lib/secrets.py)
 from random import SystemRandom
-from turtle import st
 randbits = SystemRandom().getrandbits
 
 g = 2
