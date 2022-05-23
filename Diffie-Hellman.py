@@ -17,9 +17,21 @@ def modsc(num, lim):
         n += 1
     return n
 
+# Otra implementacion del modulo
+# Pero no esta probado
+def modscv2(num, lim):
+    if (num > lim):
+        num -= lim
+        return modscv2(num, lim)
+    return num
+
 def send(num, p):
     return pow(g, num, p)
     #return modsc(g ** num, p)
+
+# Comprobar numeros no permitidos
+def s():
+    return ""
 
 def hashKey(key):
     sha256 = hashlib.sha256()
