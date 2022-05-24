@@ -29,13 +29,13 @@ def modscv2(num, lim):
         return modscv2(num, lim)
     return num
 
-def send(num, p):
-    return pow(g, num, p)
-    #return modsc(g ** num, p)
-
 # Comprobar numeros no permitidos
-def s():
-    return ""
+banned = [0, 1, 2]
+def getRandom256():
+    rand = randbits(256)
+    while (rand in banned):
+        rand = randbits(256)
+    return rand
 
 def hashKey(key):
     sha256 = hashlib.sha256()
@@ -47,8 +47,8 @@ alice = {}
 bob = {}
 
 # Llaves privadas
-alice['xA'] = randbits(256)
-bob['xB'] = randbits(256)
+alice['xA'] = getRandom256()
+bob['xB'] = getRandom256()
 
 print("Llaves privadas:")
 print("Bob: " + str(bob['xB']))
