@@ -30,7 +30,7 @@ def modscv2(num, lim):
     return num
 
 # Comprobar numeros no permitidos
-banned = [0, 1, 2]
+banned = [0]
 def getRandom256():
     rand = randbits(256)
     while (rand in banned):
