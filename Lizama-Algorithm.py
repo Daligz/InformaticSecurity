@@ -1,6 +1,12 @@
 from Crypto.Util.number import getPrime
 from random import randint
 import random
+import hashlib
+
+def hashKey(key):
+    sha256 = hashlib.sha256()
+    sha256.update(repr(key).encode())
+    return sha256.hexdigest()
 
 # Numero primo y raices primitivas | p, g1, g2
 
