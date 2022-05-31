@@ -32,3 +32,8 @@ bob['Yb'] = (p - (2 * bob['Xb']) - 1)
 
 print("Bob")
 print(bob)
+
+# Clave publica
+
+alice['Pa'] = mod(power_mod(g1, alice['Ka'], p) * (alice['Ka'])**2, p)
+print(alice)
