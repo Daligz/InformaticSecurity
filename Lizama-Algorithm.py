@@ -28,14 +28,14 @@ bob = {}
 print("Claves privadas")
 
 alice['Ka'] = random.getrandbits(128)
-alice['Xa'] = (p - random.getrandbits(64))
+alice['Xa'] = random.randint(1, p - 1)
 alice['Ya'] = (p - (2 * alice['Xa']) - 1)
 
 print("Alice")
 print(alice)
 
 bob['Kb'] = random.getrandbits(128)
-bob['Xb'] = (p - random.getrandbits(64))
+bob['Xb'] = random.randint(1, p - 1)
 bob['Yb'] = (p - (2 * bob['Xb']) - 1)
 
 print("Bob")
@@ -66,3 +66,16 @@ print(alice)
 bob['Ksb'] = mod(power_mod(alice['Pa'], bob['Xb'], p) * (alice['Qa'])**bob['Yb'], p)
 print("Bob")
 print(bob)
+
+aliceHashKey = hashKey(alice['Ksa'])
+bobHashKey = hashKey(bob['Ksb'])
+
+print("Claves hash:")
+
+print("Alice : " + str(aliceHashKey))
+print("Bob : " + str(bobHashKey))
+
+if (aliceHashKey == bobHashKey):
+    print("Llaves correctas!")
+else:
+    print("Llaves incorrectas :C")
