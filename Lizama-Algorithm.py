@@ -17,6 +17,7 @@ g2 = primitive_root(p)
 
 print("g1: " + str(g1))
 print("g2: " + str(g2))
+print()
 
 # Se crean los objetos de alice y bob
 
@@ -28,44 +29,47 @@ bob = {}
 print("Claves privadas")
 
 alice['Ka'] = random.getrandbits(128)
-alice['Xa'] = random.randint(1, p - 1)
+alice['Xa'] = random.randint(1, 500)
 alice['Ya'] = (p - (2 * alice['Xa']) - 1)
 
 print("Alice")
 print(alice)
 
 bob['Kb'] = random.getrandbits(128)
-bob['Xb'] = random.randint(1, p - 1)
+bob['Xb'] = random.randint(1, 500)
 bob['Yb'] = (p - (2 * bob['Xb']) - 1)
 
 print("Bob")
 print(bob)
+print()
 
 # Clave publica
 
 print("Claves publicas")
 
-alice['Pa'] = mod(power_mod(g1, alice['Ka'], p) * (alice['Ka'])**2, p)
-alice['Qa'] = mod(power_mod(g2, alice['Ya'], p) * alice['Ka'], p)
+alice['Pa'] = mod((power_mod(g1, alice['Xa'], p)) * (power_mod(alice['Ka'], 2, p)), p)
+alice['Qa'] = mod((power_mod(g2, alice['Ya'], p)) * mod(alice['Ka'], p), p)
 print("Alice")
 print(alice)
 
-bob['Pb'] = mod(power_mod(g1, bob['Kb'], p) * (bob['Kb'])**2, p)
-bob['Qb'] = mod(power_mod(g2, bob['Yb'], p) * bob['Kb'], p)
+bob['Pb'] = mod((power_mod(g1, bob['Xb'], p)) * (power_mod(bob['Kb'], 2, p)), p)
+bob['Qb'] = mod((power_mod(g2, bob['Yb'], p)) * mod(bob['Kb'], p), p)
 print("Bob")
 print(bob)
+print()
 
 # Computo de clave secreta
 
 print("Computo de claves secretas")
 
-alice['Ksa'] = mod(power_mod(bob['Pb'], alice['Xa'], p) * (bob['Qb'])**alice['Ya'], p)
+alice['Ksa'] = mod(power_mod(bob['Pb'], alice['Xa'], p) * power_mod(bob['Qb'], alice['Ya'], p), p)
 print("Alice")
 print(alice)
 
-bob['Ksb'] = mod(power_mod(alice['Pa'], bob['Xb'], p) * (alice['Qa'])**bob['Yb'], p)
+bob['Ksb'] = mod(power_mod(alice['Pa'], bob['Xb'], p) * power_mod(alice['Qa'], bob['Yb'], p), p)
 print("Bob")
 print(bob)
+print()
 
 aliceHashKey = hashKey(alice['Ksa'])
 bobHashKey = hashKey(bob['Ksb'])
@@ -74,6 +78,7 @@ print("Claves hash:")
 
 print("Alice : " + str(aliceHashKey))
 print("Bob : " + str(bobHashKey))
+print()
 
 if (aliceHashKey == bobHashKey):
     print("Llaves correctas!")
