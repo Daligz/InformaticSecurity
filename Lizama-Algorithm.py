@@ -19,6 +19,8 @@ bob = {}
 
 # Claves privadas
 
+print("Claves privadas")
+
 alice['Ka'] = random.getrandbits(128)
 alice['Xa'] = (p - random.getrandbits(64))
 alice['Ya'] = (p - (2 * alice['Xa']) - 1)
@@ -35,5 +37,14 @@ print(bob)
 
 # Clave publica
 
+print("Claves publicas")
+
 alice['Pa'] = mod(power_mod(g1, alice['Ka'], p) * (alice['Ka'])**2, p)
+alice['Qa'] = mod(power_mod(g2, alice['Ya'], p) * alice['Ka'], p)
+print("Alice")
 print(alice)
+
+bob['Pb'] = mod(power_mod(g1, bob['Kb'], p) * (bob['Kb'])**2, p)
+bob['Qb'] = mod(power_mod(g2, bob['Yb'], p) * bob['Kb'], p)
+print("Bob")
+print(bob)
