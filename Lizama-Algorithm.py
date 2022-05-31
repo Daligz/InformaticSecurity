@@ -48,3 +48,15 @@ bob['Pb'] = mod(power_mod(g1, bob['Kb'], p) * (bob['Kb'])**2, p)
 bob['Qb'] = mod(power_mod(g2, bob['Yb'], p) * bob['Kb'], p)
 print("Bob")
 print(bob)
+
+# Computo de clave secreta
+
+print("Computo de claves secretas")
+
+alice['Ksa'] = mod(power_mod(bob['Pb'], alice['Xa'], p) * (bob['Qb'])**alice['Ya'], p)
+print("Alice")
+print(alice)
+
+bob['Ksb'] = mod(power_mod(alice['Pa'], bob['Xb'], p) * (alice['Qa'])**bob['Yb'], p)
+print("Bob")
+print(bob)
