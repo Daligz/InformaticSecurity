@@ -29,14 +29,14 @@ bob = {}
 print("Claves privadas")
 
 alice['Ka'] = random.getrandbits(128)
-alice['Xa'] = random.randint(1, 500)
+alice['Xa'] = random.getrandbits(64)
 alice['Ya'] = (p - (2 * alice['Xa']) - 1)
 
 print("Alice")
 print(alice)
 
 bob['Kb'] = random.getrandbits(128)
-bob['Xb'] = random.randint(1, 500)
+bob['Xb'] = random.getrandbits(64)
 bob['Yb'] = (p - (2 * bob['Xb']) - 1)
 
 print("Bob")
