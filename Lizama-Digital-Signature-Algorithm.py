@@ -1,4 +1,3 @@
-︠bb1c9171-4759-46d7-9c87-94e4f6b17d88︠
 from Crypto.Util.number import getPrime
 from random import randint
 import random
