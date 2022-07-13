@@ -35,7 +35,7 @@ channel['Ca3'] = power_mod((pow(y, 3) * m) + inverse(y, 2, n), 5, n)
 
 channel['Cr1'] = power_mod(pow(y, 2) * pow(m, 2) + 2 * m + inverse(y, 2, n), 1, n)
 channel['Cr2'] = power_mod(pow(y, 6) * pow(m, 3) + (3 * pow(y, 3)) * pow(m, 2) + 3 * m + inverse(y, 3, n), 1, n)
-channel['Cr3'] = power_mod(pow(y, 15) * pow(m, 5) + (5 * pow(y, 10) * pow(m, 4)) + (10 * pow(y, 5) * pow(m, 3)) + (10 * pow(m, 2)) + (5 * inverse(y, 5, n) * m) + inverse(y, 15, n), 1, n)
+channel['Cr3'] = power_mod(pow(y, 15) * pow(m, 5) + (5 * pow(y, 10) * pow(m, 4)) + (10 * pow(y, 5) * pow(m, 3)) + (10 * pow(m, 2)) + (5 * inverse(y, 5, n) * m) + inverse(y, 10, n), 1, n)
 
 def check(fNum, sNum):
     if (fNum == sNum):
