@@ -5,7 +5,7 @@ import random
 def getNumCondition(n):
     rand = random.getrandbits(1024)
     if (rand < 0 | rand > n):
-        return getY(n)
+        return getNumCondition(n)
     return rand
 
 def inverse(num, pown, n):
